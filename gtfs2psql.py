@@ -110,7 +110,7 @@ def import_row(row, table, fields, schema, tbl_prefix):
     for fld in fields:
         flds.append(fld[0])
         if fld[0] == 'geom':
-            v = 'ST_SetSrid(ST_Point(%s, %s))' % (row['stop_lon'], row['stop_lat'])
+            v = 'ST_SetSrid(ST_Point(%s, %s), 4326)' % (row['stop_lon'], row['stop_lat'])
         else:
             v = row.get(fld[0], None)
         vals.append(format_val(fld[1], v))
